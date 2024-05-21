@@ -19,9 +19,6 @@ import androidx.compose.ui.unit.dp
 import kotlin.math.max
 
 
-
-
-
 @Composable
 fun AppBarView(
     title: String,
@@ -29,15 +26,22 @@ fun AppBarView(
 ){
 
     val navigationIcon:(@Composable () -> Unit)? =
-        {
-            IconButton(onClick = { onBackNavClicked() }) {
-                Icon(
-                    imageVector = Icons.AutoMirrored.Default.ArrowBack,
-                    tint = Color.White,
-                    contentDescription = null
-                )
+
+            if(!title.contains("WishList")){
+                {
+                    IconButton(onClick = { onBackNavClicked() }) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Default.ArrowBack,
+                            tint = Color.White,
+                            contentDescription = null
+                        )
+                    }
+                }
+            }else{
+                null
             }
-        }
+
+
     TopAppBar(title = {
         Text(
             text=title,
