@@ -19,6 +19,8 @@ import androidx.compose.ui.unit.dp
 import kotlin.math.max
 
 
+
+
 @Composable
 fun AppBarView(
     title: String,
