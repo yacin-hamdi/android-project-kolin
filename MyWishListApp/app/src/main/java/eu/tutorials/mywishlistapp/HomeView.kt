@@ -29,12 +29,14 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import eu.tutorials.mywishlistapp.data.DummyWish
 import eu.tutorials.mywishlistapp.data.Wish
 
 
 @Composable
-fun HomeView(){
+fun HomeView(navController: NavHostController,
+             wishViewModel: WishViewModel){
     val context = LocalContext.current
     val list:MutableList<Wish> = mutableListOf()
 
@@ -48,7 +50,9 @@ fun HomeView(){
                 modifier = Modifier.padding(all = 20.dp),
                 contentColor = Color.White,
                 backgroundColor = Color.Black,
-                onClick = {}) {
+                onClick = {
+                    navController.navigate(Screen.AddScreen.route)
+                }) {
                 Icon(imageVector = Icons.Default.Add, contentDescription = null )
 
             }
@@ -61,7 +65,7 @@ fun HomeView(){
             items(DummyWish.wishList){
                 item ->
                 WishItem(wish = item) {
-
+                    navController.navigate(Screen.AddScreen.route)
                 }
             }
 
