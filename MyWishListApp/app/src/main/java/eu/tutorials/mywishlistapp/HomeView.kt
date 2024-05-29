@@ -20,6 +20,7 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -58,11 +59,12 @@ fun HomeView(navController: NavHostController,
             }
         }
     ) {
+        val wishList = wishViewModel.getAllWishes.collectAsState(initial = listOf())
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(it)) {
-            items(DummyWish.wishList){
+            items(wishList.value){
                 item ->
                 WishItem(wish = item) {
                     navController.navigate(Screen.AddScreen.route)
