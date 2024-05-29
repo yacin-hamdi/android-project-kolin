@@ -101,7 +101,15 @@ fun AddEditDetailView(
                     wishViewModel.wishDescriptionState.isNotEmpty()){
 
                     if(id != 0L){
+                        wishViewModel.updateWish(
+                            Wish(
+                                id = id,
+                                title = wishViewModel.wishTitleState.trim(),
+                                description = wishViewModel.wishDescriptionState.trim()
+                            )
+                        )
 
+                        snackMessage.value = "wish updated"
                     }else{
                         wishViewModel.addWish(
                             Wish(
