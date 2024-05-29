@@ -52,7 +52,7 @@ fun HomeView(navController: NavHostController,
                 contentColor = Color.White,
                 backgroundColor = Color.Black,
                 onClick = {
-                    navController.navigate(Screen.AddScreen.route)
+                    navController.navigate(Screen.AddScreen.route + "/0L")
                 }) {
                 Icon(imageVector = Icons.Default.Add, contentDescription = null )
 
@@ -67,7 +67,8 @@ fun HomeView(navController: NavHostController,
             items(wishList.value){
                 item ->
                 WishItem(wish = item) {
-                    navController.navigate(Screen.AddScreen.route)
+                    val id = item.id
+                    navController.navigate(Screen.AddScreen.route + "/$id")
                 }
             }
 
