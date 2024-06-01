@@ -37,6 +37,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import eu.tutorials.musicappui.ui.theme.AccountView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
@@ -141,12 +142,12 @@ fun Navigation(navController: NavController,
 
     NavHost(
         navController = navController as NavHostController,
-        startDestination = Screen.DrawerScreen.AddAccount.route,
+        startDestination = Screen.DrawerScreen.Account.route,
         modifier = Modifier.padding(pd)
     ) {
 
-        composable(route = Screen.DrawerScreen.AddAccount.route){
-
+        composable(route = Screen.DrawerScreen.Account.route){
+            AccountView()
         }
         composable(route = Screen.DrawerScreen.Subscription.route){
 
