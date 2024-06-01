@@ -1,5 +1,6 @@
 package eu.tutorials.musicappui
 
+import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.PaddingValues
@@ -26,6 +27,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -55,6 +57,10 @@ fun MainView(){
         mutableStateOf(currentScreen.title)
     }
 
+    val dialogOpen = remember{
+        mutableStateOf(false)
+    }
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -77,8 +83,8 @@ fun MainView(){
                         scope.launch {
                             scaffoldState.drawerState.close()
                         }
-                        if(item.dTitle == "add_account"){
-                            // open dialog
+                        if(item.dRoute == "add_account"){
+                            dialogOpen.value = true
                         }else{
                             controller.navigate(item.dRoute)
                             title.value = item.dTitle
@@ -94,6 +100,9 @@ fun MainView(){
             navController = controller,
             viewModel = mainViewModel,
             pd=it)
+
+        AccountDialog(dialogOpen = dialogOpen)
+
     }
 }
 
