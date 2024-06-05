@@ -187,7 +187,7 @@ fun Navigation(navController: NavController,
         }
 
         composable(route = Screen.BottomScreen.Browse.route){
-
+            BrowseScreen()
         }
 
         composable(route = Screen.BottomScreen.Library.route){
