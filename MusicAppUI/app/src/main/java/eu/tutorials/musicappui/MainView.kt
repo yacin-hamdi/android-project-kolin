@@ -42,6 +42,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import eu.tutorials.musicappui.ui.theme.AccountView
+import eu.tutorials.musicappui.ui.theme.Home
 import eu.tutorials.musicappui.ui.theme.SubscriptionView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
@@ -82,7 +83,7 @@ fun MainView(){
                         label = {
                             Text(text = item.bTitle)
                         },
-                        selectedContentColor = Color.White,
+                        selectedContentColor = Color.Red,
                         unselectedContentColor = Color.Black)
                 }
             }
@@ -182,10 +183,10 @@ fun Navigation(navController: NavController,
         }
 
         composable(route = Screen.BottomScreen.Home.route){
-
+            Home()
         }
 
-        composable(route = Screen.BottomScreen.Library.route){
+        composable(route = Screen.BottomScreen.Browse.route){
 
         }
 
