@@ -103,7 +103,8 @@ fun MainView(){
                     item ->
                     BottomNavigationItem(
                         selected = currentRoute == item.bRoute,
-                        onClick = { controller.navigate(item.bRoute)},
+                        onClick = { controller.navigate(item.bRoute)
+                                  title.value = item.bTitle},
                         icon = {
                             Icon(contentDescription = item.bTitle,
                                 painter = painterResource(id = item.icon))
